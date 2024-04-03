@@ -38,10 +38,12 @@ func (imt *IncrementalMerkleTree) AddData(id int, data string) error {
 
 		if currNode.Left == nil {
 			currNode.Left = newNode
+			newNode.Parent = currNode
 			updatePath(currNode)
 			return nil
 		} else if currNode.Right == nil {
 			currNode.Right = newNode
+			newNode.Parent = currNode
 			updatePath(currNode)
 			return nil
 		}

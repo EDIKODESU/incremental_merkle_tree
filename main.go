@@ -80,7 +80,10 @@ func main() {
 				fmt.Println("Invalid block ID. Please enter a positive integer.")
 				continue
 			}
-			tree.DeleteData(id)
+			err = tree.DeleteData(id)
+			if err == nil {
+				fmt.Println("Data deleted successfully!")
+			}
 		case 3:
 			fmt.Print("Enter block ID to update: ")
 			if !scanner.Scan() {
@@ -98,8 +101,10 @@ func main() {
 				return
 			}
 			data = scanner.Text()
-			tree.UpdateData(id, data)
-			fmt.Println("Data updated!")
+			err = tree.UpdateData(id, data)
+			if err == nil {
+				fmt.Println("Data updated!")
+			}
 		case 4:
 			fmt.Print("Enter data to check: ")
 			if !scanner.Scan() {
